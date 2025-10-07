@@ -1,0 +1,59 @@
+:root {
+  --background: #ffffff;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  --foreground: #171717;
+=======
+  --foreground: #4d4b4b;
+>>>>>>> 4b0e7b0873497b3b2647e506f83a01ff5effcf1b
+=======
+  --foreground: #797979;
+>>>>>>> 7372dc93ea0b45f52283753a3f6ee26254ed613c
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+<<<<<<< HEAD
+    --background: #0a0a0a;
+    --foreground: #ededed;
+=======
+    --background: #ffffff;
+<<<<<<< HEAD
+    --foreground: #4d4b4b;
+>>>>>>> 4b0e7b0873497b3b2647e506f83a01ff5effcf1b
+=======
+    --foreground: #918f8f;
+>>>>>>> 7372dc93ea0b45f52283753a3f6ee26254ed613c
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
