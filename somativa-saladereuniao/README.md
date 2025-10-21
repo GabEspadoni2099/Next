@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Reserva de Salas de Reunião (SGM) - Connect Coworking
 
-## Getting Started
+## Briefing
+O projeto consiste no desenvolvimento de um **Sistema de Reserva de Salas de Reunião (SGM)** no formato de uma aplicação web.  
+O objetivo é centralizar e otimizar o controle das reservas de salas no espaço de coworking **Connect Coworking**, eliminando conflitos de horários e aumentando a eficiência na utilização das salas.
 
-First, run the development server:
+A plataforma permitirá o **cadastro de salas**, o **agendamento de reservas por data e horário**, e o **gerenciamento das reservas** por parte dos administradores e usuários.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Objetivos do Projeto
+- Gerenciar informações sobre as salas de reunião e suas características.  
+- Permitir que usuários façam reservas em horários disponíveis.  
+- Evitar conflitos de horário entre reservas.  
+- Fornecer uma interface simples para visualizar as reservas diárias e semanais.  
+- Possibilitar o gerenciamento completo por parte do administrador (CRUD de salas e reservas).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Público-Alvo
+- **Usuário Comum:** pode visualizar disponibilidade e realizar reservas.  
+- **Administrador:** gerencia salas, reservas e usuários.  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Levantamento de Requisitos do Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Requisitos Funcionais
+- Gerenciamento de Salas (Criar, Atualizar, Listar, Deletar).  
+- Gerenciamento de Reservas (Criar, Atualizar, Listar, Deletar).  
+- Validação de Conflito de Horários (não permitir duas reservas no mesmo horário/sala).  
+- Tela de Login e autenticação de usuários.  
+- Visualização das reservas diárias e semanais.  
+- Dashboard com resumo das reservas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Requisitos Não Funcionais
+- Armazenamento das informações em um banco de dados MongoDB.  
+- Criptografia das senhas dos usuários (Bcrypt).  
+- Uso de JWT para autenticação e segurança das rotas.  
+- Controle de acesso por níveis de permissão (Admin / Usuário).  
+- Sistema desenvolvido em Next.js (App Router).  
+- Interface responsiva e intuitiva.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Recursos do Projeto (Tecnológicos)
+- **Framework de Desenvolvimento:** Next.js  
+- **Banco de Dados:** MongoDB  
+- **Linguagem:** JavaScript  
+- **Controle de Versão:** GitHub  
+- **Editor de Código:** Visual Studio Code  
+- **Design/UI:** Figma  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Diagramas
+
+### 1. Diagrama de Classes
+Descreve o comportamento das principais entidades do sistema.
+
+- **Usuário (User):** id, nome, email, senha, role (Admin, Usuário).  
+- **Sala (Room):** id, nome, capacidade, recursos.  
+- **Reserva (Reservation):** id, data, hora de início, hora de término, idSala, idUsuario.  
+
+```mermaid
+classDiagram
+    class Usuario {
+        +String id
+        +String nome
+        +String email
+        +String senha
+        +String role
+        +create()
+        +read()
+        +update()
+        +delete()
+        +login()
+        +logout()
+    }
+
+    class Sala {
+        +String id
+        +String nome
+        +Number capacidade
+        +String recursos
+        +create()
+        +read()
+        +update()
+        +delete()
+    }
+
+    class Reserva {
+        +String id
+        +Date data
+        +String horaInicio
+        +String horaFim
+        +String idSala
+        +String idUsuario
+        +create()
+        +read()
+        +update()
+        +delete()
+    }
+
+    Usuario "1" -- "0..*" Reserva : realiza >
+    Sala "1" -- "0..*" Reserva : possui >
+
+    ---
+
+## Prototipagem
+
+- Colocar o Link da Prototipagem

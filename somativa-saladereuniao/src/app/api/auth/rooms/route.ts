@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { connectToMongo } from "@/lib/mongo";
-import Room from "@/models/Room";
+import room from "@/models/room";
 import { verifyToken } from "@/lib/auth";
 
 export async function GET() {
   await connectToMongo();
-  const rooms = await Room.find().lean();
+  const rooms = await room.find().lean();
   return NextResponse.json(rooms);
 }
 
